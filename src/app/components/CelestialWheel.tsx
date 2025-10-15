@@ -19,14 +19,15 @@ export default function CelestialWheel({
 }: CelestialWheelProps) {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
-  const [rotation, setRotation] = useState(0);
+  const [rotation, setRotation] = useState(180); // Start at 180° so sun is up for light mode
 
   useEffect(() => setMounted(true), []);
+
   if (!mounted) return null;
 
   const handleToggle = () => {
-    const newRotation = rotation + 180;
-    setRotation(newRotation);
+    // Always rotate clockwise by adding 180 degrees
+    setRotation(rotation + 180);
     setTheme(theme === 'light' ? 'dark' : 'light');
   };
 
