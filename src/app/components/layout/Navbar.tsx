@@ -3,57 +3,27 @@ import Link from 'next/link';
 
 function Navbar() {
   return (
-    <nav className="flex justify-between items-center p-4 bg-gray-800 text-white">
-      <p className="text-xl font-bold">Logo</p>
+    <header className="nav-slim" role="banner">
+      <div className="container" style={{display:'flex',alignItems:'center',justifyContent:'space-between'}}>
+        <Link href="/" className="flex items-center gap-3" aria-label="Home">
+          <div style={{width:40,height:40,borderRadius:10,background:'linear-gradient(135deg,var(--accent),#4f46e5)'}} />
+          <div>
+            <div style={{fontWeight:800}}>Rijan</div>
+            <div className="muted" style={{fontSize:12}}>Dev & Designer</div>
+          </div>
+        </Link>
 
-      {/* Main navigation */}
-      <ul className="flex gap-6">
-        <li>
-          <Link href="/about" className="hover:text-gray-400 transition-colors">
-            About
-          </Link>
-        </li>
-        <li>
-          <Link href="/portfolio" className="hover:text-gray-400 transition-colors">
-            Portfolio
-          </Link>
-        </li>
-        <li>
-          <Link href="/blog" className="hover:text-gray-400 transition-colors">
-            Blog
-          </Link>
-        </li>
-        <li>
-          <Link href="/contact" className="hover:text-gray-400 transition-colors">
-            Contact
-          </Link>
-        </li>
-      </ul>
-
-      {/* Social links */}
-      <ul className="flex gap-4">
-        <li>
-          <a href="#" className="hover:text-gray-400 transition-colors">
-            LinkedIn
-          </a>
-        </li>
-        <li>
-          <a href="#" className="hover:text-gray-400 transition-colors">
-            GitHub
-          </a>
-        </li>
-        <li>
-          <a href="#" className="hover:text-gray-400 transition-colors">
-            Facebook
-          </a>
-        </li>
-        <li>
-          <a href="#" className="hover:text-gray-400 transition-colors">
-            Instagram
-          </a>
-        </li>
-      </ul>
-    </nav>
+        <nav aria-label="Main navigation">
+          <ul style={{display:'flex',gap:20,alignItems:'center',listStyle:'none',margin:0,padding:0}}>
+            <li><Link href="/about" className="muted">About</Link></li>
+            <li><Link href="/portfolio" className="muted">Portfolio</Link></li>
+            <li><Link href="/blog" className="accent">Blog</Link></li>
+            <li><Link href="/contact" className="muted">Contact</Link></li>
+            <li><a href="#" className="btn">Contact me</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
   );
 }
 

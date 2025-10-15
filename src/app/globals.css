@@ -1,26 +1,111 @@
 @import "tailwindcss";
 
+/* --- Dark Souls-inspired theme tokens --- */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #060606; /* near black */
+  --card: #0f0f10; /* slightly lighter */
+  --muted: #9a9386; /* stone-gray */
+  --text: #efe8dc; /* parchment */
+  --accent: #c8a15b; /* faded gold */
+  --danger: #7a0b0b; /* blood red */
+  --glass: rgba(255,255,255,0.03);
+  --font-heading: var(--font-cinzel, serif);
+  --font-body: var(--font-body, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* Global base */
+* { box-sizing: border-box; }
+html,body,#root { height: 100%; }
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  font-family: var(--font-body);
+  background: radial-gradient(1000px 400px at 12% 8%, rgba(200,161,91,0.04), transparent), var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+
+/* Container helpers */
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Typography */
+p { margin: 0 0 1rem 0; color: var(--muted); }
+h1, h2, h3 { line-height: 1.05; margin: 0 0 .5rem 0; font-family: var(--font-heading); }
+h1 { font-size: 2.25rem; letter-spacing: .6px; }
+h2 { font-size: 1.5rem; }
+p { margin: 0 0 1rem 0; color: var(--muted); }
+p { margin: 0 0 1rem 0; color: var(--muted); }
+
+/* Card */
+.card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border: 1px solid rgba(255,255,255,0.03);
+  backdrop-filter: blur(4px);
+  padding: 1.25rem;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+}
+
+.muted { color: var(--muted); }
+.accent { color: var(--accent); font-weight:700 }
+
+/* Blog grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0,1fr));
+  gap: 1rem;
+}
+@media (min-width: 720px) {
+  .grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+}
+@media (min-width: 1100px) {
+  .grid { grid-template-columns: repeat(3, minmax(0,1fr)); }
+}
+
+/* Simple button */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  background: linear-gradient(180deg, rgba(200,161,91,0.15), rgba(200,161,91,0.08));
+  color: var(--text);
+  padding: .5rem .75rem;
+  border-radius: 8px;
+  border: 1px solid rgba(200,161,91,0.12);
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.tag {
+  font-size: .8rem;
+  padding: .25rem .5rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.02);
+  color: var(--muted);
+  border: 1px solid rgba(255,255,255,0.02);
+}
+
+.page-hero {
+  padding: 4rem 0 2rem 0;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.nav-slim { padding: 0.75rem 1rem; }
+
+.meta { font-size: .9rem; color: var(--muted); }
+
+/* small utilities */
+.space-y-4 > * + * { margin-top: 1rem; }
+
+/* Focus visible */
+:focus { outline: 3px solid rgba(124,58,237,0.18); outline-offset: 2px; }
+

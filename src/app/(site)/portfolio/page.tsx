@@ -1,9 +1,21 @@
-import React from 'react'
+import React from 'react';
+import Navbar from '@/app/components/layout/Navbar';
+import Footer from '@/app/components/layout/Footer';
+import Projects from '@/app/components/sections/Projects';
 
-function page() {
+export default function PortfolioPage() {
   return (
-    <div>page</div>
-  )
-}
+    <div>
+      <Navbar />
+      <main className="container" style={{padding:'2.5rem 0'}}>
+        <header style={{marginBottom:16}}>
+          <h1>Portfolio</h1>
+          <p className="muted">Selected projects, experiments and prototypes.</p>
+        </header>
 
-export default page
+        <Projects />
+      </main>
+      <Footer />
+    </div>
+  );
+}
