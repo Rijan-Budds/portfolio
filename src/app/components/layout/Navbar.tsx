@@ -60,19 +60,26 @@ export default function Navbar() {
           </ul>
 
           {open && (
-            <div className="md:hidden absolute right-0 mt-2 w-44 bg-card border border-white/5 rounded shadow-lg py-2 z-50">
+            <div className="md:hidden absolute right-0 mt-2 w-44 bg-[var(--bg)] backdrop-blur-md border border-white/10 rounded-lg shadow-xl py-2 z-50">
               <ul className="flex flex-col">
-                {navItems.map((item) => (
-                  <li key={item.href} className="px-4 py-2">
-                    <Link
-                      href={item.href}
-                      className="block text-[var(--muted)] hover:text-[var(--accent)]"
-                      onClick={() => setOpen(false)}
-                    >
-                      {item.name}
-                    </Link>
-                  </li>
-                ))}
+                {navItems.map((item) => {
+                  const isActive = pathname === item.href;
+                  return (
+                    <li key={item.href} className="px-4 py-2 hover:bg-white/5">
+                      <Link
+                        href={item.href}
+                        className={`block transition-colors ${
+                          isActive
+                            ? 'text-[var(--accent)] font-bold'
+                            : 'text-[var(--muted)] hover:text-[var(--accent)]'
+                        }`}
+                        onClick={() => setOpen(false)}
+                      >
+                        {item.name}
+                      </Link>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           )}
