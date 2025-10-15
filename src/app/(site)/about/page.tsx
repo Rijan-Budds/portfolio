@@ -27,7 +27,7 @@ const scrollItems = [
   { content: <p>I love optimizing code and exploring game mechanics alike</p> },
   {
     content:
-      "When not coding, you’ll find me conquering bosses or exploring open-world games</p>",
+      "When not coding, you’ll find me conquering bosses or exploring open-world games",
   },
   { content: <p>Always curious and learning new things every day</p> },
 ];

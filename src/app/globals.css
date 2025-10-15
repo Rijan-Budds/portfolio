@@ -35,6 +35,13 @@ body {
   padding-right: 1rem;
 }
 
+/* Ensure images scale nicely on mobile */
+.container img, .container picture, .container svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
 /* Typography */
 p { margin: 0 0 1rem 0; color: var(--muted); }
 h1, h2, h3 { line-height: 1.05; margin: 0 0 .5rem 0; font-family: var(--font-heading); }
@@ -173,7 +180,19 @@ p { margin: 0 0 1rem 0; color: var(--muted); }
   border-radius:10px;
 }
 
+/* Responsive rules */
+@media (max-width: 768px) {
+  .featured-post { grid-template-columns: 1fr; }
+  .featured-post .right { display: none; }
+  .post-card-small { padding: 1rem; }
+  .container { padding-left: .75rem; padding-right: .75rem; }
+}
+
 .nav-slim { padding: 0.75rem 1rem; }
+
+@media (max-width: 768px) {
+  .nav-slim { padding: 0.5rem 0.75rem; }
+}
 
 .meta { font-size: .9rem; color: var(--muted); }
 

@@ -67,14 +67,8 @@ export default function Contact() {
           I respond to serious inquiries — drop a line and I&apos;ll reply.
         </p>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 320px",
-            gap: 20,
-            marginTop: 20,
-          }}
-        >
+        <div className="mt-6" style={{ marginTop: 20 }}>
+          <div className="grid gap-6" style={{ gridTemplateColumns: '1fr 320px' }}>
           <form
             onSubmit={handleSubmit}
             style={{ display: "flex", flexDirection: "column", gap: 12 }}
@@ -193,6 +187,7 @@ export default function Contact() {
               unoptimized
             />
           </aside>
+          </div>
         </div>
       </div>
     </section>
