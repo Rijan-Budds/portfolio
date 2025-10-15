@@ -10,8 +10,8 @@ function Home() {
   return (
     <>
       <Navbar />
-      <Hero />
-      <Projects />
+  <Hero />
+  <Projects limit={3} />
       <Footer />
     </>
   );

@@ -6,21 +6,27 @@ export const projects: Projects = [
     title: 'Ashen UI — Design System',
     description: 'A minimal, accessible component library inspired by classic RPG aesthetics.',
     image: '/images/ashen-ui.png',
-    url: '#',
+    link: '#',
+    github: 'https://github.com/yourusername/ashen-ui',
+    tech: ['React', 'TypeScript', 'CSS']
   },
   {
     id: 'p2',
     title: 'Bonfire — Social App Experiment',
     description: 'A small prototype for community storytelling with moderation tools.',
     image: '/images/bonfire.png',
-    url: '#',
+    link: '#',
+    github: 'https://github.com/yourusername/bonfire',
+    tech: ['Next.js', 'Node.js', 'MongoDB']
   },
   {
     id: 'p3',
     title: 'Embers — Portfolio Template',
     description: 'A fast portfolio template with static rendering and beautiful typography.',
     image: '/images/embers.png',
-    url: '#',
+    link: '#',
+    github: 'https://github.com/yourusername/embers',
+    tech: ['Next.js', 'TypeScript', 'Tailwind']
   },
 ];
 

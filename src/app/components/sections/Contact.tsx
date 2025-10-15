@@ -135,7 +135,7 @@ export default function Contact() {
             </p>
             <div className="flex gap-4 mt-3 text-xl">
               <a
-                href="https://twitter.com/yourusername"
+                href="https://twitter.com/buddsrijan"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-blue-400 transition-colors"
@@ -143,7 +143,7 @@ export default function Contact() {
                 <FaTwitter />
               </a>
               <a
-                href="https://linkedin.com/in/yourusername"
+                href="https://www.linkedin.com/in/rijan-buddhacharya-0032781a6"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-blue-600 transition-colors"
@@ -151,7 +151,7 @@ export default function Contact() {
                 <FaLinkedin />
               </a>
               <a
-                href="https://github.com/yourusername"
+                href="https://github.com/Rijan-Budds"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-gray-300 transition-colors"
@@ -159,7 +159,7 @@ export default function Contact() {
                 <FaGithub />
               </a>
               <a
-                href="https://instagram.com/yourusername"
+                href="https://instagram.com/rijan.batman"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-pink-500 transition-colors"

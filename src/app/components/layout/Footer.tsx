@@ -30,7 +30,7 @@ function Footer() {
             <h3 className="text-lg font-medium mb-3 font-playfair text-[var(--muted)]">Follow Me</h3>
           <div className="flex justify-center md:justify-start gap-5 text-2xl">
             <a
-              href="https://github.com/yourusername"
+              href="https://github.com/Rijan-Budds"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-accent transition-colors"
@@ -38,7 +38,7 @@ function Footer() {
               <FaGithub />
             </a>
             <a
-              href="https://linkedin.com/in/yourusername"
+              href="https://www.linkedin.com/in/rijan-buddhacharya-0032781a6"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-accent transition-colors"
@@ -46,7 +46,7 @@ function Footer() {
               <FaLinkedin />
             </a>
             <a
-              href="https://twitter.com/yourusername"
+              href="https://twitter.com/buddsrijan"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-accent transition-colors"
@@ -54,7 +54,7 @@ function Footer() {
               <FaTwitter />
             </a>
             <a
-              href="https://instagram.com/yourusername"
+              href="https://instagram.com/rijan.batman"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-accent transition-colors"

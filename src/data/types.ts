@@ -15,7 +15,9 @@ export type Project = {
   title: string;
   description: string;
   image?: string;
-  url?: string;
+  link?: string;
+  github?: string;
+  tech?: string[];
 };
 
 export type Projects = Project[];
