@@ -1,23 +1,68 @@
-import React from 'react';
-import Link from 'next/link';
+import React from "react";
+import Link from "next/link";
+import { FaGithub, FaLinkedin, FaTwitter, FaInstagram } from "react-icons/fa";
 
 function Footer() {
   return (
-    <footer className="site-footer">
-      <div className="container footer-inner">
-        <div className="footer-brand">
-          <div style={{fontWeight:700}}>Rijan Buddhacharya</div>
-          <div className="muted">&copy; {new Date().getFullYear()}</div>
+    <footer className="w-full border-t border-white/10 py-8 text-center md:text-left">
+      <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-8">
+        
+        {/* Left: Branding */}
+          <div>
+            <h2 className="text-xl font-semibold font-cinzel text-accent">Rijan Buddhacharya</h2>
+            <p className="text-sm text-[var(--muted)] font-playfair mt-1">
+              © {new Date().getFullYear()} All rights reserved.
+            </p>
         </div>
 
-        <nav aria-label="Footer navigation" className="footer-nav">
-          <ul>
-            <li><Link href="/about" className="muted">About</Link></li>
-            <li><Link href="/portfolio" className="muted">Portfolio</Link></li>
-            <li><Link href="/blog" className="muted">Blog</Link></li>
-            <li><Link href="/contact" className="muted">Contact</Link></li>
+        {/* Middle: Quick Links */}
+        <div>
+          <ul className="space-y-2">
+            <li><Link href="/about" className="hover:text-accent transition-colors">About</Link></li>
+            <li><Link href="/portfolio" className="hover:text-accent transition-colors">Portfolio</Link></li>
+            <li><Link href="/blog" className="hover:text-accent transition-colors">Blog</Link></li>
+            <li><Link href="/contact" className="hover:text-accent transition-colors">Contact</Link></li>
           </ul>
-        </nav>
+        </div>
+
+        {/* Right: Socials */}
+        <div>
+            <h3 className="text-lg font-medium mb-3 font-playfair text-[var(--muted)]">Follow Me</h3>
+          <div className="flex justify-center md:justify-start gap-5 text-2xl">
+            <a
+              href="https://github.com/yourusername"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-accent transition-colors"
+            >
+              <FaGithub />
+            </a>
+            <a
+              href="https://linkedin.com/in/yourusername"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-accent transition-colors"
+            >
+              <FaLinkedin />
+            </a>
+            <a
+              href="https://twitter.com/yourusername"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-accent transition-colors"
+            >
+              <FaTwitter />
+            </a>
+            <a
+              href="https://instagram.com/yourusername"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-accent transition-colors"
+            >
+              <FaInstagram />
+            </a>
+          </div>
+        </div>
       </div>
     </footer>
   );

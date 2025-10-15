@@ -62,8 +62,8 @@ export default function Contact() {
   return (
     <section style={{ padding: "2rem 0" }}>
       <div style={{ maxWidth: 800, marginLeft: "auto", marginRight: "auto" }}>
-        <h2 style={{ fontSize: 28, marginBottom: 8 }}>Get in touch</h2>
-        <p className="muted">
+        <h2 className="text-2xl font-cinzel text-accent mb-2">Get in touch</h2>
+        <p className="muted font-playfair">
           I respond to serious inquiries — drop a line and I&apos;ll reply.
         </p>
 
@@ -122,10 +122,8 @@ export default function Contact() {
               <button type="submit" disabled={loading} className="btn">
                 {loading ? "Sending…" : "Send message"}
               </button>
-              {success && (
-                <div style={{ color: "var(--accent)" }}>{success}</div>
-              )}
-              {error && <div style={{ color: "var(--danger)" }}>{error}</div>}
+              {success && <div className="text-accent">{success}</div>}
+              {error && <div className="text-[var(--danger)]">{error}</div>}
             </div>
           </form>
 
@@ -137,28 +135,63 @@ export default function Contact() {
               border: "1px solid rgba(255,255,255,0.03)",
             }}
           >
-            <h3 style={{ marginTop: 0 }}>Other ways to reach me</h3>
-            <p className="muted">Follow or message me on social media:</p>
-
-            <div style={{ display: "flex", gap: 12, marginTop: 12 }}>
-              <FaTwitter />
-              <FaLinkedin />
-              <FaGithub />
-              <FaInstagram />
+            <h3 className="font-playfair">Other ways to reach me</h3>
+            <p className="muted font-playfair">
+              Follow or message me on social media:
+            </p>
+            <div className="flex gap-4 mt-3 text-xl">
+              <a
+                href="https://twitter.com/yourusername"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-blue-400 transition-colors"
+              >
+                <FaTwitter />
+              </a>
+              <a
+                href="https://linkedin.com/in/yourusername"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-blue-600 transition-colors"
+              >
+                <FaLinkedin />
+              </a>
+              <a
+                href="https://github.com/yourusername"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-gray-300 transition-colors"
+              >
+                <FaGithub />
+              </a>
+              <a
+                href="https://instagram.com/yourusername"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-pink-500 transition-colors"
+              >
+                <FaInstagram />
+              </a>
             </div>
-
             <hr
               style={{
                 margin: "16px 0",
                 borderColor: "rgba(255,255,255,0.02)",
               }}
             />
-
             <div>
-              <div style={{ fontSize: 14 }}>Bhaktapur, Nepal</div>
+              <div className="text-sm text-[var(--muted)]">
+                Bhaktapur, Nepal
+              </div>
             </div>
-
-            <Image src="/rdr.gif" alt="contact" width={300} height={300} className="rounded-lg mt-4" unoptimized />
+            <Image
+              src="/rdr.gif"
+              alt="contact"
+              width={300}
+              height={300}
+              className="rounded-lg mt-4"
+              unoptimized
+            />
           </aside>
         </div>
       </div>

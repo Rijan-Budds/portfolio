@@ -13,14 +13,14 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="nav-slim bg-[var(--bg)]">
+    <header className="nav-slim bg-[var(--bg)] site-header">
       <div className="container flex justify-between items-center">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3" aria-label="Home">
-          <div className="w-10 h-10 rounded-lg" style={{ background: 'linear-gradient(135deg,var(--accent),#4f46e5)' }} />
+          <div className="w-10 h-10 rounded-lg bg-accent" style={{ background: 'linear-gradient(135deg,var(--accent), rgba(200,161,91,0.6))' }} />
           <div>
-            <div className="font-extrabold text-lg text-[var(--text)]">Rijan</div>
-            <div className="text-xs text-[var(--muted)]">Developer & Gamer</div>
+            <div className="font-extrabold text-lg text-[var(--text)] font-cinzel">Rijan</div>
+            <div className="text-xs text-[var(--muted)] font-playfair">Developer & Gamer</div>
           </div>
         </Link>
 

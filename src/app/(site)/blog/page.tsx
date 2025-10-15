@@ -1,58 +1,89 @@
-"use client";
+import React from "react";
+import Link from "next/link";
+import postsData from "@/data/posts";
+import type { Post } from "@/data/types";
+import Navbar from "@/app/components/layout/Navbar";
+import Footer from "@/app/components/layout/Footer";
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import postsData from '@/data/posts';
-import type { Post } from '@/data/types';
-import Navbar from '@/app/components/layout/Navbar';
-import Footer from '@/app/components/layout/Footer';
+export const metadata = {
+  title: "Blog — Chronicles",
+  description:
+    "Musings on code, design, and digital craftsmanship by Rijan Buddhacharya.",
+};
 
 function formatDate(iso: string) {
   try {
-    return new Date(iso).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
-  } catch { return iso; }
+    return new Date(iso).toLocaleDateString(undefined, {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    });
+  } catch {
+    return iso;
+  }
 }
 
 export default function BlogPage() {
-  const [activeTag, setActiveTag] = useState<string | null>(null);
-
-  const tags = Array.from(new Set(postsData.flatMap((p: Post) => p.tags || [])));
-
-  const filtered = activeTag ? postsData.filter((p) => p.tags?.includes(activeTag)) : postsData;
-
   return (
     <div>
       <Navbar />
 
-      <main className="container">
-        <section className="page-hero">
-          <div>
-            <h1>Thoughts & Notes</h1>
-            <p className="muted">Writing about design, frontend engineering, and the occasional experiment.</p>
-          </div>
-          <div />
+      <main className="container py-16 px-4">
+        <section className="blog-hero">
+          <div className="title font-cinzel">Chronicles</div>
+          <div className="blog-accent-bar" />
+          <p className="subtitle">
+            Musings on code, design, and digital craftsmanship
+          </p>
         </section>
 
-        <section style={{marginTop:20}}>
-          <div style={{display:'flex',gap:8,alignItems:'center',flexWrap:'wrap',marginBottom:16}}>
-            <button className="tag" onClick={() => setActiveTag(null)} aria-pressed={!activeTag}>All</button>
-            {tags.map((t) => (
-              <button key={t} className="tag" onClick={() => setActiveTag(t)} aria-pressed={activeTag===t}>{t}</button>
-            ))}
-          </div>
+        <section className="max-w-6xl mx-auto mt-12">
+          {postsData.length > 0 && (
+            <div className="featured-post">
+              <div className="left">
+                <div className="post-accent mb-4">
+                  <span className="dot" />
+                  <span className="muted">Featured</span>
+                </div>
+                <h2 className="font-cinzel text-3xl text-accent mb-3">
+                  {postsData[0].title}
+                </h2>
+                <time
+                  dateTime={postsData[0].date}
+                  className="text-muted font-playfair italic block mb-3"
+                >
+                  {formatDate(postsData[0].date)}
+                </time>
+                <p className="text-muted mb-6">{postsData[0].excerpt}</p>
+                <Link href={postsData[0].slug} className="btn">
+                  Read Featured
+                </Link>
+              </div>
+            </div>
+          )}
 
-          <div className="grid">
-            {filtered.map((post: Post) => (
-              <article key={post.id} className="card">
-                <div style={{display:'flex',justifyContent:'space-between',alignItems:'start',gap:12}}>
+          <div className="grid md:grid-cols-2 gap-6">
+            {postsData.slice(1).map((post: Post) => (
+              <article key={post.id} className="post-card-small">
+                <div className="post-accent">
+                  <span className="dot" />
                   <div>
-                    <h2><Link href={post.slug} className="accent">{post.title}</Link></h2>
-                    <div className="meta">{formatDate(post.date)} • {post.tags?.join(', ')}</div>
-                    <p style={{marginTop:8}}>{post.excerpt}</p>
+                    <h3 className="font-cinzel text-lg text-accent mb-1">
+                      <Link href={post.slug}>{post.title}</Link>
+                    </h3>
+                    <time dateTime={post.date} className="text-muted text-sm">
+                      {formatDate(post.date)}
+                    </time>
                   </div>
-                  <div style={{minWidth:72,textAlign:'right'}}>
-                    <Link href={post.slug} className="btn">Read</Link>
-                  </div>
+                </div>
+                <p className="text-muted text-sm mt-2">{post.excerpt}</p>
+                <div className="mt-3">
+                  <Link
+                    href={post.slug}
+                    className="text-accent hover:text-accent/80"
+                  >
+                    Read →
+                  </Link>
                 </div>
               </article>
             ))}

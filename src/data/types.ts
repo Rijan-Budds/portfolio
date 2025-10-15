@@ -3,6 +3,7 @@ export type Post = {
   title: string;
   excerpt: string;
   date: string; // ISO date
+  content?: string;
   tags?: string[];
   slug: string;
 };
