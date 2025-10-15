@@ -13,6 +13,44 @@
   --font-body: var(--font-body, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial);
 }
 
+/* Light theme overrides (applies when `html` has class="light") */
+.light {
+  --bg: #ffffff;
+  --card: #ffffff;
+  --muted: #6b7280; /* gray */
+  --text: #0f172a; /* slate-900 */
+  --accent: #b7791f; /* warm gold */
+  --danger: #7a0b0b;
+  --glass: rgba(0,0,0,0.03);
+  --font-heading: var(--font-cinzel, serif);
+  --font-body: var(--font-body, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial);
+}
+
+/* Ensure body respects the light variables when .light is present on <html> */
+.light body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* Slightly tweak card/button/tag visuals in light mode */
+.light .card {
+  background: linear-gradient(180deg, rgba(0,0,0,0.03), rgba(0,0,0,0.01));
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 6px 20px rgba(2,6,23,0.04);
+}
+
+.light .btn {
+  background: linear-gradient(180deg, rgba(194,140,61,0.12), rgba(194,140,61,0.06));
+  color: var(--text);
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+.light .tag {
+  background: rgba(0,0,0,0.03);
+  color: var(--muted);
+  border: 1px solid rgba(0,0,0,0.04);
+}
+
 /* Global base */
 * { box-sizing: border-box; }
 html,body,#root { height: 100%; }
@@ -129,6 +167,16 @@ p { margin: 0 0 1rem 0; color: var(--muted); }
   color: var(--muted);
   margin-top: .5rem;
 }
+/* Heading underline for sections */
+.section-underline {
+  display: inline-block;
+  height: 6px;
+  width: 120px;
+  background: linear-gradient(90deg, var(--accent), rgba(200,161,91,0.6));
+  border-radius: 999px;
+  box-shadow: 0 6px 18px rgba(200,161,91,0.06);
+  margin-bottom: 0.75rem;
+}
 .blog-accent-bar {
   height: 6px;
   width: 140px;
@@ -150,6 +198,7 @@ p { margin: 0 0 1rem 0; color: var(--muted); }
   padding: 2rem;
   border-radius: 12px;
 }
+.featured-post .left { border-left: 4px solid rgba(200,161,91,0.06); }
 .featured-post .right {
   background: linear-gradient(180deg, rgba(0,0,0,0.16), rgba(0,0,0,0.08));
   border-radius: 12px;
@@ -176,9 +225,19 @@ p { margin: 0 0 1rem 0; color: var(--muted); }
   flex-direction:column;
   gap:.5rem;
   padding:.75rem;
-  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  background: linear-gradient(180deg, rgba(0,0,0,0.14), rgba(0,0,0,0.06));
   border-radius:10px;
+  border: 1px solid rgba(255,255,255,0.03);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.45);
 }
+
+.blog-list article + article {
+  margin-top: 1rem;
+  border-top: 1px solid rgba(255,255,255,0.02);
+  padding-top: 1rem;
+}
+
+.blog-hero { padding-bottom: 1rem; }
 
 /* Responsive rules */
 @media (max-width: 768px) {
@@ -267,6 +326,20 @@ p { margin: 0 0 1rem 0; color: var(--muted); }
   transform-origin: center center;
 }
 
+/* Add a subtle underline/separator for infinite menu area to prevent emptiness */
+.infinite-menu-wrapper {
+  position: relative;
+  padding: 1rem 0.5rem;
+}
+.infinite-menu-wrapper::after {
+  content: '';
+  display: block;
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.06));
+  margin-top: 12px;
+}
+
 .infinite-scroll-item {
   --accent-color: #ffffff;
   border-radius: 15px;
@@ -281,6 +354,20 @@ p { margin: 0 0 1rem 0; color: var(--muted); }
   user-select: none;
   box-sizing: border-box;
   position: relative;
+}
+
+/* Add subtle separators and spacing for infinite scroll items */
+.infinite-scroll-item {
+  background: transparent;
+  border: none;
+  padding: 1.25rem 1rem;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+.infinite-scroll-item:last-child {
+  border-bottom: none;
+}
+.infinite-scroll-item > * {
+  color: var(--text);
 }
 
 /* Note: this CSS is only an example, you can overlay whatever you want using the activeItem logic */
@@ -307,7 +394,7 @@ p { margin: 0 0 1rem 0; color: var(--muted); }
   height: 60px;
   display: grid;
   place-items: center;
-  background: #5227ff;
+  background: linear-gradient(180deg, rgba(82,39,255,0.95), rgba(82,39,255,0.85));
   border: none;
   border-radius: 50%;
   cursor: pointer;
@@ -365,6 +452,12 @@ p { margin: 0 0 1rem 0; color: var(--muted); }
   transform: translate(-90%, -50%);
   pointer-events: auto;
   transition: 0.5s ease;
+}
+
+/* Small utility: add subtle inner-shadow to sections to pop against background */
+.section-pop {
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.02), 0 6px 18px rgba(0,0,0,0.45);
+  border-radius: 10px;
 }
 
 .face-description.inactive {

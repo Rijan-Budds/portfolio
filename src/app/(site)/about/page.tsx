@@ -126,8 +126,9 @@ export default function AboutPage() {
 
         <section className="mb-8">
           <h2 className="text-2xl font-cinzel text-accent mb-4 text-center">Languages I&apos;m comfortable with</h2>
-          <div className="card" style={{ padding: 12, borderRadius: 12 }}>
-            <div style={{ height: 300, position: 'static' }}>
+          <div className="flex justify-center"><span className="section-underline" /></div>
+          <div className="card section-pop mt-6" style={{ padding: 12, borderRadius: 12 }}>
+            <div className="infinite-menu-wrapper" style={{ height: 300, position: 'static' }}>
               <InfiniteMenu items={menuItems} />
             </div>
           </div>

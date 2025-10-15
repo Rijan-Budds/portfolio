@@ -19,18 +19,24 @@ function Hero() {
   };
 
   return (
-    <section className="bg-black p-8 text-center">
+    <section className="p-8 text-center bg-[var(--card)]">
       <h2 className="text-4xl font-bold mb-2 font-cinzel text-accent">Welcome weary traveller</h2>
       
-      <Image 
-        src="/dark-souls-knight.gif" 
-        alt="Dark Souls Knight" 
-        width={600} 
-        height={400} 
-        className="mx-auto mb-4 rounded-lg cursor-pointer transition-transform duration-300 hover:scale-105" 
-        unoptimized 
-        onClick={toggleMusic}
-      />
+  <div className="mx-auto mb-4 rounded-lg cursor-pointer inline-block group relative" onClick={toggleMusic}>
+        <Image
+          src="/dark-souls-knight.gif"
+          alt="Dark Souls Knight"
+          width={600}
+          height={400}
+          className="rounded-lg transition-transform duration-300 group-hover:scale-105"
+          unoptimized
+        />
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/50 text-white px-4 py-2 rounded-md">
+            <span className="text-sm font-medium">Click to play music</span>
+          </div>
+        </div>
+      </div>
       
       <p className="text-lg text-[var(--muted)] font-playfair">Rest here, for great adventures lie ahead.</p>
       

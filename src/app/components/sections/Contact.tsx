@@ -67,52 +67,34 @@ export default function Contact() {
           I respond to serious inquiries — drop a line and I&apos;ll reply.
         </p>
 
-        <div className="mt-6" style={{ marginTop: 20 }}>
+        <div className="mt-6">
           <div className="grid gap-6" style={{ gridTemplateColumns: '1fr 320px' }}>
           <form
             onSubmit={handleSubmit}
-            style={{ display: "flex", flexDirection: "column", gap: 12 }}
+            className="flex flex-col gap-3"
           >
             <input
               value={form.name}
               onChange={(e) => update("name", e.target.value)}
               placeholder="Your name"
-              style={{
-                padding: 12,
-                borderRadius: 8,
-                border: "1px solid rgba(255,255,255,0.06)",
-                background: "rgba(255,255,255,0.02)",
-                color: "var(--text)",
-              }}
+              className="p-3 rounded-md border bg-[rgba(255,255,255,0.02)] text-[var(--text)]"
             />
             <input
               value={form.email}
               onChange={(e) => update("email", e.target.value)}
               placeholder="Your email"
               type="email"
-              style={{
-                padding: 12,
-                borderRadius: 8,
-                border: "1px solid rgba(255,255,255,0.06)",
-                background: "rgba(255,255,255,0.02)",
-                color: "var(--text)",
-              }}
+              className="p-3 rounded-md border bg-[rgba(255,255,255,0.02)] text-[var(--text)]"
             />
             <textarea
               value={form.message}
               onChange={(e) => update("message", e.target.value)}
               placeholder="Message"
               rows={8}
-              style={{
-                padding: 12,
-                borderRadius: 8,
-                border: "1px solid rgba(255,255,255,0.06)",
-                background: "rgba(255,255,255,0.02)",
-                color: "var(--text)",
-              }}
+              className="p-3 rounded-md border bg-[rgba(255,255,255,0.02)] text-[var(--text)]"
             />
 
-            <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
+            <div className="flex items-center gap-3">
               <button type="submit" disabled={loading} className="btn">
                 {loading ? "Sending…" : "Send message"}
               </button>
@@ -121,14 +103,7 @@ export default function Contact() {
             </div>
           </form>
 
-          <aside
-            style={{
-              padding: 16,
-              borderRadius: 10,
-              background: "rgba(255,255,255,0.02)",
-              border: "1px solid rgba(255,255,255,0.03)",
-            }}
-          >
+          <aside className="section-pop p-4 rounded-md">
             <h3 className="font-playfair">Other ways to reach me</h3>
             <p className="muted font-playfair">
               Follow or message me on social media:
