@@ -7,12 +7,7 @@ export default function ContactPage() {
   return (
     <div>
       <Navbar />
-      <main className="container" style={{padding:'2.5rem 0'}}>
-        <header style={{marginBottom:16}}>
-          <h1>Contact</h1>
-          <p className="muted">Get in touch — I respond to serious inquiries.</p>
-        </header>
-
+      <main className="container" style={{padding:'2.5rem '}}>
         <ContactSection />
       </main>
       <Footer />

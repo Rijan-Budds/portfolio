@@ -1,30 +1,52 @@
-import React from 'react';
+'use client';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
-function Navbar() {
+export default function Navbar() {
+  const pathname = usePathname();
+
+  const navItems = [
+    { name: 'About', href: '/about' },
+    { name: 'Portfolio', href: '/portfolio' },
+    { name: 'Blog', href: '/blog' },
+    { name: 'Contact', href: '/contact' },
+  ];
+
   return (
-    <header className="nav-slim" role="banner">
-      <div className="container" style={{display:'flex',alignItems:'center',justifyContent:'space-between'}}>
+    <header className="nav-slim bg-[var(--bg)]">
+      <div className="container flex justify-between items-center">
+        {/* Logo */}
         <Link href="/" className="flex items-center gap-3" aria-label="Home">
-          <div style={{width:40,height:40,borderRadius:10,background:'linear-gradient(135deg,var(--accent),#4f46e5)'}} />
+          <div className="w-10 h-10 rounded-lg" style={{ background: 'linear-gradient(135deg,var(--accent),#4f46e5)' }} />
           <div>
-            <div style={{fontWeight:800}}>Rijan</div>
-            <div className="muted" style={{fontSize:12}}>Dev & Designer</div>
+            <div className="font-extrabold text-lg text-[var(--text)]">Rijan</div>
+            <div className="text-xs text-[var(--muted)]">Developer & Gamer</div>
           </div>
         </Link>
 
-        <nav aria-label="Main navigation">
-          <ul style={{display:'flex',gap:20,alignItems:'center',listStyle:'none',margin:0,padding:0}}>
-            <li><Link href="/about" className="muted">About</Link></li>
-            <li><Link href="/portfolio" className="muted">Portfolio</Link></li>
-            <li><Link href="/blog" className="accent">Blog</Link></li>
-            <li><Link href="/contact" className="muted">Contact</Link></li>
-            <li><a href="#" className="btn">Contact me</a></li>
+        {/* Navigation */}
+        <nav>
+          <ul className="flex gap-6 items-center">
+            {navItems.map((item) => {
+              const isActive = pathname === item.href;
+              return (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className={`transition-colors ${
+                      isActive
+                        ? 'text-[var(--accent)] font-bold'
+                        : 'text-[var(--muted)] hover:text-[var(--accent)]'
+                    }`}
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </nav>
       </div>
     </header>
   );
 }
-
-export default Navbar;

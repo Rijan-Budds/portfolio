@@ -10,7 +10,7 @@ export default function PortfolioPage() {
       <main className="container" style={{padding:'2.5rem 0'}}>
         <header style={{marginBottom:16}}>
           <h1>Portfolio</h1>
-          <p className="muted">Selected projects, experiments and prototypes.</p>
+          <p className="muted">Check out some of my latest works.</p>
         </header>
 
         <Projects />

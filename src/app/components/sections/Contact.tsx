@@ -1,17 +1,167 @@
-import React from 'react';
+"use client";
 
-function Contact() {
+import React, { useState } from "react";
+import Image from "next/image";
+
+import { FaInstagram } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
+import { FaTwitter } from "react-icons/fa";
+
+type FormState = {
+  name: string;
+  email: string;
+  message: string;
+};
+
+export default function Contact() {
+  const [form, setForm] = useState<FormState>({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  const update = (k: keyof FormState, v: string) =>
+    setForm((prev) => ({ ...prev, [k]: v }));
+
+  const validate = () => {
+    if (!form.name.trim()) return "Please enter your name.";
+    if (!form.email.includes("@")) return "Please enter a valid email.";
+    if (!form.message.trim()) return "Please enter a message.";
+    return null;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError(null);
+    setSuccess(null);
+    const v = validate();
+    if (v) return setError(v);
+    setLoading(true);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data?.message || "Failed to send");
+      setSuccess("Message sent — thank you. I will reply soon.");
+      setForm({ name: "", email: "", message: "" });
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "An error occurred";
+      setError(message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
-    <section className="py-8">
-      <h2 className="text-2xl font-bold mb-4">Contact</h2>
-      <form className="flex flex-col gap-4">
-        <input type="text" placeholder="Name" className="p-2 border border-gray-300 rounded-lg" />
-        <input type="email" placeholder="Email" className="p-2 border border-gray-300 rounded-lg" />
-        <textarea placeholder="Message" className="p-2 border border-gray-300 rounded-lg"></textarea>
-        <button type="submit" className="bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600">Send</button>
-      </form>
+    <section style={{ padding: "2rem 0" }}>
+      <div style={{ maxWidth: 800, marginLeft: "auto", marginRight: "auto" }}>
+        <h2 style={{ fontSize: 28, marginBottom: 8 }}>Get in touch</h2>
+        <p className="muted">
+          I respond to serious inquiries — drop a line and I&apos;ll reply.
+        </p>
+
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 320px",
+            gap: 20,
+            marginTop: 20,
+          }}
+        >
+          <form
+            onSubmit={handleSubmit}
+            style={{ display: "flex", flexDirection: "column", gap: 12 }}
+          >
+            <input
+              value={form.name}
+              onChange={(e) => update("name", e.target.value)}
+              placeholder="Your name"
+              style={{
+                padding: 12,
+                borderRadius: 8,
+                border: "1px solid rgba(255,255,255,0.06)",
+                background: "rgba(255,255,255,0.02)",
+                color: "var(--text)",
+              }}
+            />
+            <input
+              value={form.email}
+              onChange={(e) => update("email", e.target.value)}
+              placeholder="Your email"
+              type="email"
+              style={{
+                padding: 12,
+                borderRadius: 8,
+                border: "1px solid rgba(255,255,255,0.06)",
+                background: "rgba(255,255,255,0.02)",
+                color: "var(--text)",
+              }}
+            />
+            <textarea
+              value={form.message}
+              onChange={(e) => update("message", e.target.value)}
+              placeholder="Message"
+              rows={8}
+              style={{
+                padding: 12,
+                borderRadius: 8,
+                border: "1px solid rgba(255,255,255,0.06)",
+                background: "rgba(255,255,255,0.02)",
+                color: "var(--text)",
+              }}
+            />
+
+            <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
+              <button type="submit" disabled={loading} className="btn">
+                {loading ? "Sending…" : "Send message"}
+              </button>
+              {success && (
+                <div style={{ color: "var(--accent)" }}>{success}</div>
+              )}
+              {error && <div style={{ color: "var(--danger)" }}>{error}</div>}
+            </div>
+          </form>
+
+          <aside
+            style={{
+              padding: 16,
+              borderRadius: 10,
+              background: "rgba(255,255,255,0.02)",
+              border: "1px solid rgba(255,255,255,0.03)",
+            }}
+          >
+            <h3 style={{ marginTop: 0 }}>Other ways to reach me</h3>
+            <p className="muted">Follow or message me on social media:</p>
+
+            <div style={{ display: "flex", gap: 12, marginTop: 12 }}>
+              <FaTwitter />
+              <FaLinkedin />
+              <FaGithub />
+              <FaInstagram />
+            </div>
+
+            <hr
+              style={{
+                margin: "16px 0",
+                borderColor: "rgba(255,255,255,0.02)",
+              }}
+            />
+
+            <div>
+              <div style={{ fontSize: 14 }}>Bhaktapur, Nepal</div>
+            </div>
+
+            <Image src="/rdr.gif" alt="contact" width={300} height={300} className="rounded-lg mt-4" unoptimized />
+          </aside>
+        </div>
+      </div>
     </section>
   );
 }
-
-export default Contact;

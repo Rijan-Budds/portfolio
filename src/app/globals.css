@@ -19,7 +19,7 @@ html,body,#root { height: 100%; }
 body {
   margin: 0;
   font-family: var(--font-body);
-  background: radial-gradient(1000px 400px at 12% 8%, rgba(200,161,91,0.04), transparent), var(--bg);
+  background: var(--bg); /* Remove the radial gradient, just use solid black */
   color: var(--text);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -109,3 +109,202 @@ p { margin: 0 0 1rem 0; color: var(--muted); }
 /* Focus visible */
 :focus { outline: 3px solid rgba(124,58,237,0.18); outline-offset: 2px; }
 
+.particles-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Footer layout improvements */
+.site-footer { padding: 1.25rem 0; border-top: 1px solid rgba(255,255,255,0.03); margin-top: 2.5rem; }
+.footer-inner { display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
+.footer-brand { min-width: 0; }
+.footer-nav ul { display:flex; gap:1rem; list-style:none; margin:0; padding:0; align-items:center; flex-wrap:wrap; }
+.footer-nav a { color: var(--muted); font-size: .95rem; }
+
+/* Prevent images from overflowing their container */
+.container img, .container picture, .container svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Keep footer compact on small screens */
+.site-footer { padding: 0.9rem 0; }
+.footer-nav ul { flex-wrap: nowrap; overflow: auto; }
+.footer-nav ul li { white-space: nowrap; }
+
+
+.infinite-scroll-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+.infinite-scroll-wrapper::before,
+.infinite-scroll-wrapper::after {
+  content: '';
+  position: absolute;
+  background: linear-gradient(var(--dir, to bottom), 060010, transparent);
+  height: 25%;
+  width: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.infinite-scroll-wrapper::before {
+  top: 0;
+}
+
+.infinite-scroll-wrapper::after {
+  --dir: to top;
+  bottom: 0;
+}
+
+.infinite-scroll-container {
+  display: flex;
+  flex-direction: column;
+  overscroll-behavior: contain;
+  padding-inline: 1rem;
+  cursor: grab;
+  transform-origin: center center;
+}
+
+.infinite-scroll-item {
+  --accent-color: #ffffff;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-align: center;
+  border: 2px solid var(--accent-color);
+  user-select: none;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* Note: this CSS is only an example, you can overlay whatever you want using the activeItem logic */
+
+#infinite-grid-menu-canvas {
+  cursor: grab;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  outline: none;
+  background: transparent;
+}
+
+#infinite-grid-menu-canvas:active {
+  cursor: grabbing;
+}
+
+.action-button {
+  position: absolute;
+  left: 50%;
+  z-index: 10;
+  width: 60px;
+  height: 60px;
+  display: grid;
+  place-items: center;
+  background: #5227ff;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 5px solid #000;
+}
+
+.face-title {
+  user-select: none;
+  position: absolute;
+  font-weight: 900;
+  font-size: 4rem;
+  left: 1.6em;
+  top: 50%;
+}
+
+.action-button-icon {
+  user-select: none;
+  position: relative;
+  color: #fff;
+  top: 2px;
+  font-size: 26px;
+}
+
+.face-title {
+  position: absolute;
+  top: 50%;
+  transform: translate(20%, -50%);
+}
+
+.face-title.active {
+  opacity: 1;
+  transform: translate(20%, -50%);
+  pointer-events: auto;
+  transition: 0.5s ease;
+}
+
+.face-title.inactive {
+  pointer-events: none;
+  opacity: 0;
+  transition: 0.1s ease;
+}
+
+.face-description {
+  user-select: none;
+  position: absolute;
+  max-width: 10ch;
+  top: 50%;
+  font-size: 1.5rem;
+  right: 1%;
+  transform: translate(0, -50%);
+}
+
+.face-description.active {
+  opacity: 1;
+  transform: translate(-90%, -50%);
+  pointer-events: auto;
+  transition: 0.5s ease;
+}
+
+.face-description.inactive {
+  pointer-events: none;
+  transform: translate(-60%, -50%);
+  opacity: 0;
+  transition: 0.1s ease;
+}
+
+.action-button {
+  position: absolute;
+  left: 50%;
+}
+
+.action-button.active {
+  bottom: 3.8em;
+  transform: translateX(-50%) scale(1);
+  opacity: 1;
+  pointer-events: auto;
+  transition: 0.5s ease;
+}
+
+.action-button.inactive {
+  bottom: -80px;
+  transform: translateX(-50%) scale(0);
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.1s ease;
+}
+
+@media (max-width: 1500px) {
+  .face-title,
+  .face-description {
+    display: none;
+  }
+}
