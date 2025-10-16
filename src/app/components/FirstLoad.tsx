@@ -9,14 +9,11 @@ export default function FirstLoad() {
       if (localStorage.getItem("hasVisited")) return;
 
       const el = document.documentElement;
-      // mark first-visit, then trigger play to allow transitions
       el.classList.add("first-visit");
-      // small delay to ensure styles apply
       requestAnimationFrame(() => {
         setTimeout(() => el.classList.add("play"), 50);
       });
 
-      // remove the classes after animations complete
       const cleanupTimeout = setTimeout(() => {
         el.classList.remove("first-visit", "play");
         try { localStorage.setItem("hasVisited", "1"); } catch {}
@@ -24,7 +21,6 @@ export default function FirstLoad() {
 
       return () => clearTimeout(cleanupTimeout);
     } catch {
-      // ignore
     }
   }, []);
 

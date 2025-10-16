@@ -7,7 +7,6 @@ function Footer() {
     <footer className="w-full border-t border-white/10 py-8 text-center md:text-left">
       <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-8">
         
-        {/* Left: Branding */}
           <div>
             <h2 className="text-xl font-semibold font-cinzel text-accent">Rijan Buddhacharya</h2>
             <p className="text-sm text-[var(--muted)] font-playfair mt-1">
@@ -15,7 +14,6 @@ function Footer() {
             </p>
         </div>
 
-        {/* Middle: Quick Links */}
         <div>
           <ul className="space-y-2">
             <li><Link href="/about" className="hover:text-accent transition-colors">About</Link></li>
@@ -25,7 +23,6 @@ function Footer() {
           </ul>
         </div>
 
-        {/* Right: Socials */}
         <div>
             <h3 className="text-lg font-medium mb-3 font-playfair text-[var(--muted)]">Follow Me</h3>
           <div className="flex justify-center md:justify-start gap-5 text-2xl">

@@ -26,7 +26,6 @@ export default function Navbar() {
           </div>
         </Link>
 
-        {/* Navigation */}
         <nav className="relative">
           <button
             className="md:hidden p-2 rounded border border-white/5"

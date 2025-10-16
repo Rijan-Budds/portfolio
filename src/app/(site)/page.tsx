@@ -11,7 +11,7 @@ function Home() {
     <>
       <Navbar />
       <Hero />
-      <Projects />
+      <Projects limit={3}/>
       <Footer />
     </>
   );
