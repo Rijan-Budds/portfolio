@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useMusic } from "../../context/MusicContent";
 
 function Hero() {
-  const { playMusic } = useMusic();
+  const { toggleMusic } = useMusic(); 
 
   return (
     <section className="p-8 text-center bg-[var(--card)]">
@@ -14,7 +14,7 @@ function Hero() {
 
       <div
         className="mx-auto mb-4 rounded-lg cursor-pointer inline-block group relative"
-        onClick={playMusic}
+        onClick={toggleMusic} 
       >
         <Image
           src="/dark-souls-knight.gif"
