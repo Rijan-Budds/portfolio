@@ -1,11 +1,11 @@
-  // {
-  //   title: "project name",
-  //   description: "Description for project 1",
-  //   image: "/Untitled.png",
-  //   tech: ["Next.js", "TypeScript", "Tailwind", "Prisma", "PostgreSQL"],
-  //   link: "",
-  //   github: ""
-  // },
+// {
+//   title: "project name",
+//   description: "Description for project 1",
+//   image: "/Untitled.png",
+//   tech: ["Next.js", "TypeScript", "Tailwind", "Prisma", "PostgreSQL"],
+//   link: "",
+//   github: ""
+// },
 
 
 import { Project } from "./types";
@@ -20,12 +20,12 @@ export const projects: Project[] = [
     github: "https://github.com/Rijan-Budds/tech-hub"
   },
   {
-    title: "Ecommerce Website",
-    description: "Similar ecommerce website design. But with different database. This one uses MongoDB as database",
-    image: "/mongo.png",
-    tech: ["Next.js", "TypeScript", "Tailwind CSS", "MongoDB atlas"],
-    link: "https://tech-hub-sage.vercel.app/",
-    github: "https://github.com/Rijan-Budds/ecommerce"
+    title: "AirBNB clone",
+    description: "A full-stack AirBNB clone with real-time inventory and an immersive room booking experience.",
+    image: "/airbnb.png",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS", "Supabase"],
+    link: "",
+    github: "https://github.com/Rijan-Budds/airbnb-clone"
   },
   {
     title: "Grading Students System",
