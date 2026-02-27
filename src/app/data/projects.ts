@@ -42,4 +42,18 @@ export const projects: Project[] = [
     tech: ["Elixir", "Phoenix Framework"],
     github: "https://github.com/Rijan-Budds/Insta"
   },
+  {
+    title: "Airbnb clone (WIP)",
+    description: "Learning more of nextjs. So building an airbnb clone.",
+    image: "/airbnb.png",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS"],
+    github: "https://github.com/Rijan-Budds/airbnb-clone"
+  },
+  {
+    title: "Passport automation",
+    description: "Built to learn more about automation and web scraping using python. Checks if there are any available seats in the passport office. and notifies the user.",
+    image: "/passport.png",
+    tech: ["Python", "Chromium", "playwright", "fastapi"],
+    github: "https://github.com/Rijan-Budds/passport-automation"
+  }
 ];
